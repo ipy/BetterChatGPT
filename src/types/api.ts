@@ -8,11 +8,14 @@ export interface EventSourceDataInterface {
 
 export type EventSourceData = EventSourceDataInterface | '[DONE]';
 
+export interface EventSourceDataMessage {
+  content?: string;
+  role?: string;
+}
+
 export interface EventSourceDataChoices {
-  delta: {
-    content?: string;
-    role?: string;
-  };
+  delta?: EventSourceDataMessage; // stream mode
+  message?: EventSourceDataMessage; // non-stream mode
   finish_reason?: string;
   index: number;
 }

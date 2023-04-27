@@ -118,7 +118,8 @@ const useSubmit = () => {
               if (typeof curr === 'string') {
                 partial += curr;
               } else {
-                const content = curr.choices[0].delta.content;
+                const message = curr.choices[0].delta || curr.choices[0].message;
+                const content = message?.content;
                 if (content) output += content;
               }
               return output;
